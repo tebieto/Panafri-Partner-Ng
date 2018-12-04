@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Add Products</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications"></ion-icon>
+      </ion-button>
+      <ion-button (click)="toggleSearch()">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          Select Store
+        </ion-label>
+        <ion-select>
+          <ion-select-option value="f">Kenndy Store</ion-select-option>
+          <ion-select-option value="m">Kenndy Store 2</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <div padding class="select-images">
+      <input type="file">
+       <div class="camera-holder"><ion-icon name="camera"></ion-icon></div>
+       <p>Add product photo</p>
+    </div>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          Select Category
+        </ion-label>
+        <ion-select>
+          <ion-select-option value="f">Food & Drinks</ion-select-option>
+          <ion-select-option value="m">Electronics</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+
+        </ion-label>
+        <ion-input clearInput type="text" placeholder="Enter  Product Title"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-textarea placeholder="Enter Product Description"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-row>
+      <ion-col size="6">
+        <ion-list>
+          <ion-item>
+            <ion-input clearInput type="text" placeholder=" Unit Price"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col size="6">
+        <ion-list>
+          <ion-item>
+            <ion-input clearInput type="number" placeholder=" Qty"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  
+    <ion-button expand="full" type="submit" color="default" padding>Save</ion-button>
+  </form>
+</ion-content>

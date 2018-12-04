@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Reviews</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+    <ion-list>
+        <ion-item *ngFor="let i of [1,2,3,5,6,5]">
+          <ion-avatar slot="start">
+            <img src="https://res.cloudinary.com/sportbay-co/image/upload/v1537287942/user_svhfyt.png">
+          </ion-avatar>
+          <ion-label>
+            <h2>Finn Jeo - Jul 17, 2018 at 30:11</h2>
+            <h3>
+              <ion-icon slot="icon-only"  name="star" class="gold" ></ion-icon>
+              <ion-icon slot="icon-only"  name="star" class="gold"></ion-icon>
+              <ion-icon slot="icon-only"  name="star" class="gold"></ion-icon>
+              <ion-icon slot="icon-only"  name="star" ></ion-icon>
+              <ion-icon slot="icon-only"  name="star" ></ion-icon>
+            </h3>
+            <p>Listen, I've had a pretty messed up day...</p>
+            <p>Good</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+</ion-content>

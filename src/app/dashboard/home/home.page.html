@@ -1,0 +1,116 @@
+<ion-header>
+    <ion-toolbar color="danger">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Dashboard</ion-title>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="icon-only" name="notifications"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon slot="icon-only" name="more"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+  <ion-item>
+    <ion-label>Current Store</ion-label>
+    <ion-select>
+      <ion-select-option value="f">Kenddy Edahh Store</ion-select-option>
+      <ion-select-option value="m">Kenddy Edahh Store 2</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-row>
+    <ion-col size="6">
+      <ion-card>
+        <ion-item>
+          <ion-label>Earnings</ion-label>
+          <ion-icon slot="icon-only" slot="end" name="more" (click)="presentPopover()"></ion-icon>
+        </ion-item>
+        <ion-card-header>
+          <ion-card-title> &#8358;2,000</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card>
+        <ion-item>
+          <ion-label>Products</ion-label>
+          <ion-icon slot="icon-only" slot="end" name="more" (click)="presentPopover()"></ion-icon>
+        </ion-item>
+        <ion-card-header>
+          <ion-card-title>30</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-item>
+          <ion-label>Requests</ion-label>
+          <ion-icon slot="icon-only" slot="end" name="more" (click)="presentPopover()"></ion-icon>
+        </ion-item>
+        <ion-card-header>
+          <ion-card-title>4</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card>
+        <ion-item>
+          <ion-label>Services</ion-label>
+          <ion-icon slot="icon-only" slot="end" name="more" (click)="presentPopover()"></ion-icon>
+        </ion-item>
+        <ion-card-header>
+          <ion-card-title>10</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-item>
+          <ion-label>Reviews</ion-label>
+          <ion-icon slot="icon-only" slot="end" name="more" (click)="presentPopover()"></ion-icon>
+        </ion-item>
+        <ion-card-header>
+          <ion-card-title>3/10</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card>
+        <ion-item>
+          <ion-label>Customers</ion-label>
+          <ion-icon slot="icon-only" slot="end" name="more" (click)="presentPopover()"></ion-icon>
+        </ion-item>
+        <ion-card-header>
+          <ion-card-title>30</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <!-- fab placed in the center of the content with a list on each side -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <span class="fab-label">Add Product</span>
+      <ion-fab-button (click)="goToNewProduct()">
+        <ion-icon name="basket"></ion-icon>
+      </ion-fab-button>
+      <span class="fab-label">Add Services</span>
+      <ion-fab-button>
+        <ion-icon name="book"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

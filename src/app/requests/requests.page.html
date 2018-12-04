@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Requests</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <!-- Disabled Segment -->
+  <ion-segment (ionChange)="segmentChanged($event)" color="danger">
+    <ion-segment-button value="successful" checked>
+      7 Successful
+    </ion-segment-button>
+    <ion-segment-button value="incomming">
+      1 incomming
+    </ion-segment-button>
+    <ion-segment-button value="missed">
+      1 Missed
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="currentTab == 'successful'">
+    <ion-list>
+      <ion-item *ngFor="let i of [1,2,3,5,6,5]">
+        <ion-avatar slot="start">
+          <img src="https://res.cloudinary.com/sportbay-co/image/upload/v1537287942/user_svhfyt.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>Finn Jeo <span class="disabled-text">[sold beans]</span></h2>
+          <p>Requested by Kiri Kamal on Oct 3, 2018 at 12:06 PM</p>
+          <p>successful</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+  <div *ngIf="currentTab == 'incomming'" text-center>
+    <ion-avatar class="avatar">
+      <img src="https://res.cloudinary.com/sportbay-co/image/upload/v1537287942/user_svhfyt.png">
+    </ion-avatar>
+    <h4>Incomming Requests from Alex Onozor</h4>
+    <p>Wants to buy one of your yam</p>
+    <ion-row>
+      <ion-col>
+          <ion-button color="danger">Decline</ion-button>
+      </ion-col>
+      <ion-col>
+          <ion-button color="primary">Accept</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div *ngIf="currentTab == 'missed'">
+    <ion-list>
+      <ion-item *ngFor="let i of [1,2,3]">
+        <ion-avatar slot="start">
+          <img src="https://res.cloudinary.com/sportbay-co/image/upload/v1537287942/user_svhfyt.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>Finn Jeo <span class="disabled-text">[sold beans]</span></h2>
+          <p>Requested by Kiri Kamal on Oct 3, 2018 at 12:06 PM</p>
+          <p>missed</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

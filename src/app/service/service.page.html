@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar color="danger">
+        <ion-buttons slot="start">
+            <ion-button icon-only (click)="goBackToService()">
+                <ion-icon icon-only name="arrow-round-back"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+      <ion-title>Emmanule dry cleaning service</ion-title>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="icon-only" name="notifications"></ion-icon>
+        </ion-button>
+        <ion-button (click)="toggleSearch()">
+          <ion-icon slot="icon-only" name="search"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon slot="icon-only" name="more"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content padding>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+        <img src="https://ionicframework.com/dist/preview-app/www/assets/img/nin-live.png" alt="">
+    </ion-slide>
+    <ion-slide>
+        <img src="https://ionicframework.com/dist/preview-app/www/assets/img/nin-live.png" alt="">
+    </ion-slide>
+    <ion-slide>
+        <img src="https://ionicframework.com/dist/preview-app/www/assets/img/nin-live.png" alt="">
+    </ion-slide>
+  </ion-slides>
+
+  <h4>Emmanule dry cleaning service</h4>
+  <p>Category: Cleaning</p>
+  <p>Service description, this is a service I have to do here is a service i have in mind </p>
+  <p>Price: N20,000</p>
+  <ion-row>
+    <ion-col>
+      <ion-button size="full" color="secondary">Edit</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button size="full" color="danger">Delete</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

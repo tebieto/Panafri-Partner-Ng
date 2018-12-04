@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-button icon-only (click)="goBackToStores()">
+        <ion-icon icon-only name="arrow-round-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Add service</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications"></ion-icon>
+      </ion-button>
+      <ion-button (click)="toggleSearch()">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          Select Store
+        </ion-label>
+        <ion-select>
+          <ion-select-option value="f">Kenndy Store</ion-select-option>
+          <ion-select-option value="m">Kenndy Store 2</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <div padding class="select-images">
+      <input type="file">
+      <div class="camera-holder">
+        <ion-icon name="camera"></ion-icon>
+      </div>
+      <p>Add Service photo</p>
+    </div>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          Select Category
+        </ion-label>
+        <ion-select>
+          <ion-select-option value="f">Transporter</ion-select-option>
+          <ion-select-option value="m">Delivery</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+
+        </ion-label>
+        <ion-input clearInput type="text" placeholder="Enter Service Title"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-textarea placeholder="Enter Description"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+        </ion-label>
+        <ion-input clearInput type="number" placeholder="Enter Price"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="full" type="submit" color="default" padding>Save</ion-button>
+  </form>
+</ion-content>

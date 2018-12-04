@@ -1,0 +1,7 @@
+{
+  "name": "panafri",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

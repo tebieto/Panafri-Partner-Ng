@@ -1,0 +1,81 @@
+<ion-content padding>
+  <form (ngSubmit)="savePersonalDetails()">
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="home"></ion-icon>
+        </ion-label>
+        <ion-input clearInput type="text" placeholder="Preferred Store Name"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label>Select Product Category</ion-label>
+        <ion-select>
+          <ion-select-option value="f">Automotive and motocycle</ion-select-option>
+          <ion-select-option value="m">Beauty and perfume</ion-select-option>
+          <ion-select-option value="m">Computing</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+        <ion-item>
+          <ion-label>
+            <ion-icon name="information"></ion-icon>
+          </ion-label>
+          <ion-input clearInput type="text" placeholder="Enter Shop Description"></ion-input>
+        </ion-item>
+      </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="mail"></ion-icon>
+        </ion-label>
+        <ion-input clearInput type="email" placeholder="Enter Email (optinal)"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="call"></ion-icon>
+        </ion-label>
+        <ion-input clearInput type="text" placeholder="Enter Mobile Number (optinal)"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="compass"></ion-icon>
+        </ion-label>
+        <ion-input clearInput type="text" placeholder="Enter Address"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="flag"></ion-icon>
+        </ion-label>
+        <ion-input clearInput type="text" placeholder="Enter State"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="compass"></ion-icon>
+        </ion-label>
+        <ion-input clearInput type="text" placeholder="Enter Landmark"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label>Business Identity</ion-label>
+        <ion-select>
+          <ion-select-option value="f">Individual</ion-select-option>
+          <ion-select-option value="m">Registered Business</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="full" type="submit" color="danger">Submit</ion-button>
+  </form>
+</ion-content>

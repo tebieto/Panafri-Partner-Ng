@@ -1,0 +1,18 @@
+<ion-header no-border>
+  <ion-toolbar color="danger" >
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding >
+  <ion-tabs tabbar-placement="top" color="danger" tabbar-highlight="true" class="tab-shadow">
+    <ion-tab label="Personal Details" href="register/signup/(personal:personal)">
+      <ion-router-outlet name="personal"></ion-router-outlet>
+    </ion-tab>
+    <ion-tab label="Shop Details" href="register/signup/(shop:shop)">
+      <ion-router-outlet name="shop"></ion-router-outlet>
+    </ion-tab>
+  </ion-tabs>
+</ion-content>

@@ -1,0 +1,32 @@
+.header {
+    height: 150px;
+    width: 100%;
+    background: #f04141;
+    padding: 10px;
+    color: #fff;
+    h3 {
+        line-height: 15px;
+    }
+    p {
+        line-height: 1px;
+    }
+    svg {
+        color: #ccc;
+    }
+    ion-icon {
+        font-size: 1.5em;
+    }
+
+    .active-review {
+        color: gold;
+    }
+}
+
+.side-bar  .sc-ion-label-md-h{
+    margin: 11px 8px 11px 16px;
+}
+
+ion-footer  .sc-ion-label-md-h{
+    margin: 11px 8px 11px 16px;
+}
+
