@@ -5,7 +5,7 @@
                 <ion-icon icon-only name="arrow-round-back"></ion-icon>
             </ion-button>
           </ion-buttons>
-      <ion-title>Zobo Drink</ion-title>
+      <ion-title>{{Name}}</ion-title>
       <ion-buttons slot="end">
         <ion-button>
           <ion-icon slot="icon-only" name="notifications"></ion-icon>
@@ -23,51 +23,45 @@
 <ion-content padding>
   <ion-slides pager="true" [options]="slideOpts">
     <ion-slide>
-        <img src="https://ionicframework.com/dist/preview-app/www/assets/img/nin-live.png" alt="">
-    </ion-slide>
-    <ion-slide>
-        <img src="https://ionicframework.com/dist/preview-app/www/assets/img/nin-live.png" alt="">
-    </ion-slide>
-    <ion-slide>
-        <img src="https://ionicframework.com/dist/preview-app/www/assets/img/nin-live.png" alt="">
+        <img src="{{Image}}" alt="">
     </ion-slide>
   </ion-slides>
 
-  <h4>Zobo Drink</h4>
-  <p>Category: Food & Drinks</p>
-  <p>Product description, this is a description I have to do here is a desctiption i have in mind </p>
+  <h4>{{Name}}</h4>
+  <p>Category: {{Category}}</p>
+  <p>{{Description}} </p>
   <ion-list>
     <ion-item>
       <ion-label>
         <h2>Price</h2>
-        <h3>N20,000</h3>
+        <h3>N{{Price}}</h3>
       </ion-label>
     </ion-item>
     <ion-item>
       <ion-label>
         <h2>Category</h2>
-        <h3>Food & Drinks</h3>
+        <h3>{{Category}}</h3>
       </ion-label>
     </ion-item>
     <ion-item>
       <ion-label>
         <h2>Total Quantity</h2>
-        <h3>3</h3>
+        <h3>{{Quantity}}</h3>
       </ion-label>
     </ion-item>
     <ion-item>
       <ion-label>
         <h2>Total Quantity Left</h2>
-        <h3>4</h3>
+        <h3>{{Left}}</h3>
       </ion-label>
     </ion-item>
   </ion-list>
   <ion-row>
     <ion-col>
-      <ion-button size="full" color="secondary">Edit</ion-button>
+      <ion-button size="full" color="secondary" (click)="editProduct()">Edit</ion-button>
     </ion-col>
     <ion-col>
-      <ion-button size="full" color="danger">Delete</ion-button>
+      <ion-button size="full" color="danger" (click)="deleteProduct()">Delete</ion-button>
     </ion-col>
   </ion-row>
 </ion-content>

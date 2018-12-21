@@ -15,13 +15,6 @@
     </ion-toolbar>
   </ion-header>
 <ion-content>
-  <ion-item>
-    <ion-label>Current Store</ion-label>
-    <ion-select>
-      <ion-select-option value="f">Kenddy Edahh Store</ion-select-option>
-      <ion-select-option value="m">Kenddy Edahh Store 2</ion-select-option>
-    </ion-select>
-  </ion-item>
   <ion-row>
     <ion-col size="6">
       <ion-card>
@@ -30,7 +23,7 @@
           <ion-icon slot="icon-only" slot="end" name="more" (click)="presentPopover()"></ion-icon>
         </ion-item>
         <ion-card-header>
-          <ion-card-title> &#8358;2,000</ion-card-title>
+          <ion-card-title> &#8358;{{earnings}}</ion-card-title>
         </ion-card-header>
       </ion-card>
     </ion-col>
@@ -41,7 +34,7 @@
           <ion-icon slot="icon-only" slot="end" name="more" (click)="presentPopover()"></ion-icon>
         </ion-item>
         <ion-card-header>
-          <ion-card-title>30</ion-card-title>
+          <ion-card-title>{{products}}</ion-card-title>
         </ion-card-header>
       </ion-card>
     </ion-col>
@@ -55,7 +48,7 @@
           <ion-icon slot="icon-only" slot="end" name="more" (click)="presentPopover()"></ion-icon>
         </ion-item>
         <ion-card-header>
-          <ion-card-title>4</ion-card-title>
+          <ion-card-title>{{requests}}</ion-card-title>
         </ion-card-header>
       </ion-card>
     </ion-col>
@@ -66,7 +59,7 @@
           <ion-icon slot="icon-only" slot="end" name="more" (click)="presentPopover()"></ion-icon>
         </ion-item>
         <ion-card-header>
-          <ion-card-title>10</ion-card-title>
+          <ion-card-title>{{services}}</ion-card-title>
         </ion-card-header>
       </ion-card>
     </ion-col>
@@ -80,7 +73,7 @@
           <ion-icon slot="icon-only" slot="end" name="more" (click)="presentPopover()"></ion-icon>
         </ion-item>
         <ion-card-header>
-          <ion-card-title>3/10</ion-card-title>
+          <ion-card-title>{{reviews}}</ion-card-title>
         </ion-card-header>
       </ion-card>
     </ion-col>
@@ -91,7 +84,7 @@
           <ion-icon slot="icon-only" slot="end" name="more" (click)="presentPopover()"></ion-icon>
         </ion-item>
         <ion-card-header>
-          <ion-card-title>30</ion-card-title>
+          <ion-card-title>{{customers}}</ion-card-title>
         </ion-card-header>
       </ion-card>
     </ion-col>
@@ -103,12 +96,16 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
+        <span class="fab-label">Add Store</span>
+        <ion-fab-button (click)="goToNewStore()">
+          <ion-icon name="basket"></ion-icon>
+        </ion-fab-button>
       <span class="fab-label">Add Product</span>
       <ion-fab-button (click)="goToNewProduct()">
         <ion-icon name="basket"></ion-icon>
       </ion-fab-button>
       <span class="fab-label">Add Services</span>
-      <ion-fab-button>
+      <ion-fab-button (click)="goToNewService()">
         <ion-icon name="book"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>

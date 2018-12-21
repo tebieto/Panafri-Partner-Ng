@@ -7,17 +7,17 @@
     <ion-label>
       <ion-icon name="mail"></ion-icon>
     </ion-label>
-    <ion-input type="email" placeholder="Email"></ion-input>
+    <ion-input type="email" placeholder="Email" [(ngModel)]="user.email"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>
       <ion-icon name="lock"></ion-icon>
     </ion-label>
-    <ion-input type="password" placeholder="password"></ion-input>
+    <ion-input type="password" placeholder="password" [(ngModel)]="user.password"></ion-input>
     <ion-icon name="eye"></ion-icon>
   </ion-item>
   <div text-center class="action">
-    <ion-button color="danger">SIGN IN</ion-button>
+    <ion-button color="danger" (click)="Login()">SIGN IN</ion-button>
     <p>Don't have an account? <b><a [routerLink]="['/register', 'signup', { outlets: { personal: ['personal'] } }]">Sign
           up!</a></b></p>
     <p><a [routerLink]="['/register', 'signup', { outlets: { personal: ['personal'] } }]">Forgot password?</a></p>

@@ -4,12 +4,12 @@
           <ion-row>
             <ion-col size="4">
               <ion-avatar>
-                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                <img src="{{user.avatar}}">
               </ion-avatar>
             </ion-col>
             <ion-col size="7">
-              <h3>Kenndy Eddah</h3>
-              <p>Kenndy Supper Store</p>
+              <h3>{{user.name}}</h3>
+              <p>{{checkStatus(user.status)}}</p>
               <p>
                 <ion-icon name="star" class="active-review"></ion-icon>
                 <ion-icon name="star" class="active-review"></ion-icon>
@@ -59,9 +59,15 @@
             </ion-item>
           </ion-menu-toggle>
           <ion-menu-toggle>
-            <ion-item routerLink="/dashboard/settings" [routerDirection]="'root'">
+            <ion-item (click)="editProfile()">
               <ion-icon name="settings"></ion-icon>
-              <ion-label>Settings</ion-label>
+              <ion-label>Edit Profile</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item routerLink="/dashboard/password/change" [routerDirection]="'root'">
+              <ion-icon name="settings"></ion-icon>
+              <ion-label>Change Password</ion-label>
             </ion-item>
           </ion-menu-toggle>
           <ion-menu-toggle>
@@ -74,7 +80,7 @@
         </ion-content>
         <ion-footer>
           <ion-item>
-            <ion-toggle color="danger"></ion-toggle>
+            <ion-toggle color="danger" [(ngModel)]="user.status" (ngModelChange)="updateStatus()"></ion-toggle>
             <ion-label>On duty?</ion-label>
           </ion-item>
         </ion-footer>

@@ -19,14 +19,17 @@
 
   <!-- Disabled Segment -->
   <ion-segment (ionChange)="segmentChanged($event)" color="danger">
-    <ion-segment-button value="successful" checked>
-      7 Successful
+    <ion-segment-button value="successful">
+      {{successList.length}} Successful
     </ion-segment-button>
-    <ion-segment-button value="incomming">
-      1 incomming
+    <ion-segment-button value="incomming" *ngIf="showIncoming" [checked]="checkIncoming()">
+      {{incomingList.length}} incomming
     </ion-segment-button>
     <ion-segment-button value="missed">
-      1 Missed
+      {{cancelledList.length}} Declined
+    </ion-segment-button>
+    <ion-segment-button value="all" [checked]="checkAll()">
+      {{requestList.length}} All
     </ion-segment-button>
   </ion-segment>
 </ion-header>
@@ -34,45 +37,59 @@
 <ion-content padding>
   <div *ngIf="currentTab == 'successful'">
     <ion-list>
-      <ion-item *ngFor="let i of [1,2,3,5,6,5]">
+      <ion-item *ngFor="let item of successList">
         <ion-avatar slot="start">
-          <img src="https://res.cloudinary.com/sportbay-co/image/upload/v1537287942/user_svhfyt.png">
+          <img src="{{item.product.image}}">
         </ion-avatar>
         <ion-label>
-          <h2>Finn Jeo <span class="disabled-text">[sold beans]</span></h2>
-          <p>Requested by Kiri Kamal on Oct 3, 2018 at 12:06 PM</p>
+          <h2>{{item.seller.name}} <span class="disabled-text">[ {{item.product.name.toLowerCase()}}]</span></h2>
+          <p>Requested by {{item.buyer.name}} on {{item.created_at}}</p>
           <p>successful</p>
         </ion-label>
       </ion-item>
     </ion-list>
   </div>
 
-
-  <div *ngIf="currentTab == 'incomming'" text-center>
+  <div  *ngIf="currentTab == 'incomming'">
+  <div *ngFor="let item of incomingList" text-center>
     <ion-avatar class="avatar">
-      <img src="https://res.cloudinary.com/sportbay-co/image/upload/v1537287942/user_svhfyt.png">
+      <img src="{{item.avatar}}">
     </ion-avatar>
-    <h4>Incomming Requests from Alex Onozor</h4>
-    <p>Wants to buy one of your yam</p>
+    <h4>Incomming Requests from {{item.buyer}}</h4>
+    <p>Wants to buy one of your {{item.name}}</p>
     <ion-row>
       <ion-col>
-          <ion-button color="danger">Decline</ion-button>
+          <ion-button color="danger" (click)="decline(item.rid)">Decline</ion-button>
       </ion-col>
       <ion-col>
-          <ion-button color="primary">Accept</ion-button>
+          <ion-button color="primary" (click)="accept(item.rid)">Accept</ion-button>
       </ion-col>
     </ion-row>
   </div>
   <div *ngIf="currentTab == 'missed'">
     <ion-list>
-      <ion-item *ngFor="let i of [1,2,3]">
+      <ion-item *ngFor="let item of cancelledList">
         <ion-avatar slot="start">
-          <img src="https://res.cloudinary.com/sportbay-co/image/upload/v1537287942/user_svhfyt.png">
+          <img src="{{item.product.image}}">
         </ion-avatar>
         <ion-label>
-          <h2>Finn Jeo <span class="disabled-text">[sold beans]</span></h2>
-          <p>Requested by Kiri Kamal on Oct 3, 2018 at 12:06 PM</p>
-          <p>missed</p>
+          <h2>{{item.seller.name}} <span class="disabled-text">[{{item.product.name.toLowerCase()}}]</span></h2>
+          <p>Requested by {{item.buyer.name}} on {{item.created_at}}</p>
+          <p>cancelled</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</div>
+  <div *ngIf="currentTab == 'all'">
+    <ion-list>
+      <ion-item *ngFor="let item of requestList">
+        <ion-avatar slot="start">
+          <img src="{{item.product.image}}">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{item.seller.name}} <span class="disabled-text">[{{item.product.name.toLowerCase()}}]</span></h2>
+          <p>Requested by {{item.buyer.name}} on {{item.created_at}}</p>
         </ion-label>
       </ion-item>
     </ion-list>

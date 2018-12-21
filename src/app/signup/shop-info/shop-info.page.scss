@@ -1,1 +1,19 @@
-
+.select-images {
+    
+    input {
+        display: none;
+    }
+    .camera-holder {
+      text-align: center;
+      border: 1px solid #ccc;
+      font-size: 20px;
+      padding: 25px;
+      margin: auto 0px;
+      width: 25%;
+      border-radius: 100%;
+      margin: 0px auto;
+    }
+    p {
+      text-align: center;
+    }
+}

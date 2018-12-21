@@ -20,21 +20,18 @@
 
 <ion-content >
     <ion-list>
-        <ion-item *ngFor="let i of [1,2,3,5,6,5]">
+        <ion-item *ngFor="let item of reviewList">
           <ion-avatar slot="start">
-            <img src="https://res.cloudinary.com/sportbay-co/image/upload/v1537287942/user_svhfyt.png">
+            <img src="{{item.avatar}}">
           </ion-avatar>
           <ion-label>
-            <h2>Finn Jeo - Jul 17, 2018 at 30:11</h2>
+            <h2>{{item.name}} - {{item.created_at}}</h2>
             <h3>
-              <ion-icon slot="icon-only"  name="star" class="gold" ></ion-icon>
-              <ion-icon slot="icon-only"  name="star" class="gold"></ion-icon>
-              <ion-icon slot="icon-only"  name="star" class="gold"></ion-icon>
-              <ion-icon slot="icon-only"  name="star" ></ion-icon>
-              <ion-icon slot="icon-only"  name="star" ></ion-icon>
+              <ion-icon *ngFor="let i of arrayGold(item.rating)" slot="icon-only"  name="star" class="gold" ></ion-icon>
+              <ion-icon slot="icon-only" *ngFor="let i of arrayLight(item.rating)"  name="star" ></ion-icon>
             </h3>
-            <p>Listen, I've had a pretty messed up day...</p>
-            <p>Good</p>
+            <p>{{item.message}}</p>
+            <p>{{remark(item.rating)}}</p>
           </ion-label>
         </ion-item>
       </ion-list>

@@ -1,21 +1,48 @@
+<ion-header>
+    <ion-toolbar color="danger">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Add Store</ion-title>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="icon-only" name="notifications"></ion-icon>
+        </ion-button>
+        <ion-button (click)="toggleSearch()">
+          <ion-icon slot="icon-only" name="search"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon slot="icon-only" name="more"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+
 <ion-content padding>
-  <form (ngSubmit)="savePersonalDetails()">
+  <form (ngSubmit)="saveStore()">
+
+      <div padding class="select-images" (click)="uploadFromImagePicker()">
+       <div class="camera-holder"><ion-icon name="camera"></ion-icon></div>
+       <p>Add store photo</p>
+    </div>
+
+  <ion-list>
+    <ion-item>
+      <ion-label fixed >Active Photo</ion-label>
+      <ion-avatar item-end>
+        <img src="{{imgPreview}}" >
+      </ion-avatar>
+    </ion-item>
+  </ion-list>
+   
+
     <ion-list>
       <ion-item>
         <ion-label>
           <ion-icon name="home"></ion-icon>
         </ion-label>
-        <ion-input clearInput type="text" placeholder="Preferred Store Name"></ion-input>
-      </ion-item>
-    </ion-list>
-    <ion-list>
-      <ion-item>
-        <ion-label>Select Product Category</ion-label>
-        <ion-select>
-          <ion-select-option value="f">Automotive and motocycle</ion-select-option>
-          <ion-select-option value="m">Beauty and perfume</ion-select-option>
-          <ion-select-option value="m">Computing</ion-select-option>
-        </ion-select>
+        <ion-input clearInput type="text" placeholder="Preferred Store Name" name="name" [(ngModel)]="store.name"></ion-input>
       </ion-item>
     </ion-list>
     <ion-list>
@@ -23,7 +50,7 @@
           <ion-label>
             <ion-icon name="information"></ion-icon>
           </ion-label>
-          <ion-input clearInput type="text" placeholder="Enter Shop Description"></ion-input>
+          <ion-input clearInput type ="text" placeholder="Enter Shop Description" name="description" [(ngModel)]="store.description"></ion-input>
         </ion-item>
       </ion-list>
     <ion-list>
@@ -31,7 +58,7 @@
         <ion-label>
           <ion-icon name="mail"></ion-icon>
         </ion-label>
-        <ion-input clearInput type="email" placeholder="Enter Email (optinal)"></ion-input>
+        <ion-input clearInput type="email" placeholder="Enter Email (optinal)" name="email" [(ngModel)]="store.email"></ion-input>
       </ion-item>
     </ion-list>
     <ion-list>
@@ -39,7 +66,7 @@
         <ion-label>
           <ion-icon name="call"></ion-icon>
         </ion-label>
-        <ion-input clearInput type="text" placeholder="Enter Mobile Number (optinal)"></ion-input>
+        <ion-input clearInput type="text" placeholder="Enter Mobile Number (optinal)" name="phone" [(ngModel)]="store.phone"></ion-input>
       </ion-item>
     </ion-list>
     <ion-list>
@@ -47,7 +74,7 @@
         <ion-label>
           <ion-icon name="compass"></ion-icon>
         </ion-label>
-        <ion-input clearInput type="text" placeholder="Enter Address"></ion-input>
+        <ion-input clearInput type="text" placeholder="Enter Address" name="address" [(ngModel)]="store.address"></ion-input>
       </ion-item>
     </ion-list>
     <ion-list>
@@ -55,7 +82,7 @@
         <ion-label>
           <ion-icon name="flag"></ion-icon>
         </ion-label>
-        <ion-input clearInput type="text" placeholder="Enter State"></ion-input>
+        <ion-input clearInput type="text" placeholder="Enter State" name="state" [(ngModel)]="store.state"></ion-input>
       </ion-item>
     </ion-list>
     <ion-list>
@@ -63,15 +90,15 @@
         <ion-label>
           <ion-icon name="compass"></ion-icon>
         </ion-label>
-        <ion-input clearInput type="text" placeholder="Enter Landmark"></ion-input>
+        <ion-input clearInput type="text" placeholder="Enter Landmark" name="landmark" [(ngModel)]="store.landmark"></ion-input>
       </ion-item>
     </ion-list>
     <ion-list>
       <ion-item>
         <ion-label>Business Identity</ion-label>
-        <ion-select>
-          <ion-select-option value="f">Individual</ion-select-option>
-          <ion-select-option value="m">Registered Business</ion-select-option>
+        <ion-select name="identity" [(ngModel)]="store.identity">
+          <ion-select-option value="Individual">Individual</ion-select-option>
+          <ion-select-option value="Registered Business">Registered Business</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-list>

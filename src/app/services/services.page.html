@@ -21,15 +21,15 @@
   
   <ion-content>
     <ion-row>
-      <ion-col *ngFor="let i of [1,3,5,6,7,8,95,4,6,7]" (click)="viewService(i)">
+      <ion-col *ngFor="let item of serviceList" (click)="viewService(item.id)">
         <ion-card>
           <ion-card-header>
-            <ion-card-subtitle>Electornic</ion-card-subtitle>
-            <p>Fix your generator</p>
+            <ion-card-subtitle>{{item.category}}</ion-card-subtitle>
+            <p>{{item.name}}</p>
           </ion-card-header>
-          <img src="https://ionicframework.com/dist/preview-app/www/assets/img/nin-live.png" alt="">
+          <img src="{{item.image}}" alt="">
           <ion-card-content>
-            Here is on of the...
+           {{item.description}}
           </ion-card-content>
         </ion-card>
       </ion-col>

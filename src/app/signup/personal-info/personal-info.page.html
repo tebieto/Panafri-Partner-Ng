@@ -1,36 +1,20 @@
 <ion-content padding>
-  <form (ngSubmit)="savePersonalDetails()">
+  <form (ngSubmit)="signUp()">
     <ion-list>
       <ion-item>
         <ion-label>
           <ion-icon name="contact"></ion-icon>
         </ion-label>
-        <ion-input clearInput type="text" placeholder="Enter Full Name"></ion-input>
+        <ion-input type="text" placeholder="Enter Full Name" [(ngModel)]="user.name" name="name"></ion-input>
       </ion-item>
     </ion-list>
-    <ion-list>
-      <ion-item>
-        <ion-label>
-          <ion-icon name="contact"></ion-icon>
-        </ion-label>
-        <ion-input clearInput type="text" placeholder="Enter User Name"></ion-input>
-      </ion-item>
-    </ion-list>
-    <ion-list>
-      <ion-item>
-        <ion-label><ion-icon name="transgender"></ion-icon></ion-label>
-        <ion-select placeholder="Select Gender">
-          <ion-select-option value="f">Female</ion-select-option>
-          <ion-select-option value="m">Male</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
+    
     <ion-list>
       <ion-item>
         <ion-label>
           <ion-icon name="mail"></ion-icon>
         </ion-label>
-        <ion-input clearInput type="email" placeholder="Enter Email"></ion-input>
+        <ion-input clearInput type="email" placeholder="Enter Email" [(ngModel)]="user.email" name="email"></ion-input>
       </ion-item>
     </ion-list>
     <ion-list>
@@ -38,7 +22,7 @@
         <ion-label>
           <ion-icon name="call"></ion-icon>
         </ion-label>
-        <ion-input clearInput type="tel" placeholder="Enter Mobile Number"></ion-input>
+        <ion-input clearInput type="tel" placeholder="Enter Mobile Number" [(ngModel)]="user.phone" name="phone"></ion-input>
       </ion-item>
     </ion-list>
     <ion-list>
@@ -46,7 +30,7 @@
         <ion-label>
           <ion-icon name="lock"></ion-icon>
         </ion-label>
-        <ion-input clearInput type="password" placeholder="Enter Password"></ion-input>
+        <ion-input clearInput type="password" placeholder="Enter Password" [(ngModel)]="user.password" name="password"></ion-input>
         <ion-icon name="eye"></ion-icon>
       </ion-item>
     </ion-list>
@@ -55,7 +39,7 @@
         <ion-label>
           <ion-icon name="lock"></ion-icon>
         </ion-label>
-        <ion-input clearInput type="password" placeholder="Confirm Password"></ion-input>
+        <ion-input clearInput type="password" placeholder="Confirm Password" [(ngModel)]="user.password_confirmation" name="password_confirmation"></ion-input>
         <ion-icon name="eye"></ion-icon>
       </ion-item>
     </ion-list>
