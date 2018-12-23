@@ -80,7 +80,7 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl('dashboard/services/new');
   }
   goToNewStore() {
-    this.router.navigateByUrl('dashboard/stores/new');
+    this.router.navigateByUrl('stores/new');
   }
 
 }

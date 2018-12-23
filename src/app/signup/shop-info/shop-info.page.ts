@@ -106,6 +106,10 @@ export class ShopInfoPage implements OnInit{
       this.router.navigate(['dashboard']);
     }, 1000);
   }
+
+  goBackToDashboard() {
+    this.router.navigate(['dashboard']);
+  }
 }
 
 

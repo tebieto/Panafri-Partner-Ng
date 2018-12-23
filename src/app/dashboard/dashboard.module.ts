@@ -8,7 +8,6 @@ import { DashboardPage } from './dashboard.page';
 import { ProductsPage } from '../products/products.page';
 import { NewProductsPage } from '../products/new-products/new-products.page';
 import { EditProductPage } from '../products/edit-product/edit-product.page';
-import { ShopInfoPage} from '../signup/shop-info/shop-info.page';
 import { EditShopPage} from '../signup/edit-shop/edit-shop.page';
 import { ChangePasswordPage} from '../signup/change-password/change-password.page';
 import { EditProfilePage} from '../signup/edit-profile/edit-profile.page';
@@ -65,10 +64,7 @@ const routes: Routes = [
         path: 'password/change',
         component: ChangePasswordPage
       },
-      {
-        path: 'stores/new',
-        component: ShopInfoPage
-      },
+     
       {
         path: 'stores/edit',
         component: EditShopPage
@@ -115,7 +111,6 @@ const routes: Routes = [
     EditShopPage,
     EditServicePage,
     NewServicesPage,
-    ShopInfoPage,
     ProductViewPage,
     ReviewsPage,
     RequestsPage,
