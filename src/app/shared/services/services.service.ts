@@ -31,6 +31,7 @@ export class ServicesService {
                         service.name, 
                         service.price, 
                         service.owner,
+                        service.store,
                         service.type, 
                         service.description, 
                         service.category, 
@@ -43,7 +44,6 @@ export class ServicesService {
                 });
                 return serviceList;
             }),
-            catchError(this.handleErrors)
         );
     }
 

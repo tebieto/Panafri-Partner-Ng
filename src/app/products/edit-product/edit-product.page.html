@@ -26,6 +26,7 @@
           Select Store
         </ion-label>
         <ion-select [(ngModel)]="product.store" name="store">
+            <ion-select-option value="0">Default</ion-select-option>
             <ion-select-option *ngFor="let item of storeList" [value]="item.id">{{item.name}}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -81,6 +82,7 @@
           </ion-item>
         </ion-list>
       </ion-col>
+      <!--
       <ion-col size="6">
         <ion-list>
           <ion-item>
@@ -88,6 +90,7 @@
           </ion-item>
         </ion-list>
       </ion-col>
+    -->
     </ion-row>
   
     <ion-button expand="full" type="submit"  color="default" padding >Update</ion-button>

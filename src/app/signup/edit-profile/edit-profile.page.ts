@@ -102,9 +102,27 @@ export class EditProfilePage implements OnInit {
     this.signupService.edit(this.user)
     .subscribe(
       (result) => {
-        console.log(result)
+        if(result.success){
+          alert("Profile edited successfully.")
+        }
     },
-      (error) => alert("Unfortunately we could not create your account.")
+    (error) => {
+
+      let body = JSON.parse(error._body)
+      //console.log(body)
+     
+      if (body){
+        body = body.replace(/"|}|\{|]|\[/g, "")
+        body = body.replace(/,/g, " ")
+        alert(body)
+        return
+        
+      }
+
+      alert("Unfortunately we could not create your account.")
+      return
+
+    } 
     );
       
   }

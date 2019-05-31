@@ -24,6 +24,7 @@ export class EditProductPage implements OnInit {
   storeList=[]
   imagePaths: string[];
   image:{}
+  debugging= true
 
   isDesktop: boolean;
  imgPreview = 'https://res.cloudinary.com/sportbay-co/image/upload/v1537287942/user_svhfyt.png';
@@ -56,9 +57,9 @@ export class EditProductPage implements OnInit {
       this.product.category=params.category
       this.product.description=params.description
       this.product.location=params.location
-      this.product.store=3
-      this.product.quantity=2
+      this.product.store=params.store
       this.imgPreview=params.image
+      //console.log(this.product)
     });
 
     this.CategoriesService.load()
@@ -89,6 +90,7 @@ export class EditProductPage implements OnInit {
       let result= await this.imageManagementService.uploadFromImagePicker();
       console.log(result['URL'])
       this.imgPreview=result['URL']
+      this.product.image= this.imgPreview
          
     } catch(error) {
       console.log(error);
@@ -119,12 +121,30 @@ export class EditProductPage implements OnInit {
 
   saveProduct() {
    
-    this.product.image=this.imgPreview
+    if(!this.product.store){
+      alert("Select store")
+      return
+    }
+
+    if(!this.product.image && this.debugging==false){
+      alert("Upload a product image")
+      return
+    }
+
+    if(!this.product.image){
+      this.product.image=this.imgPreview
+    }
+
+    if(!this.product.name || !this.product.image || !this.product.description || !this.product.price || !this.product.location || !this.product.category || !this.product.store) {
+      alert("All fields are required")
+      return
+    }
+    
     this.productService.edit(this.product)
       .subscribe(
         (result) => {
           alert(result.success)
-
+          return
          
       },
         (error) => {

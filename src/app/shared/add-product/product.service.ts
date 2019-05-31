@@ -14,7 +14,7 @@ export class ProductService {
     product(product: Product) {
         
          this.token = "Bearer" + product.token
-         console.log(this.token)
+         //console.log(this.token)
 
         let headers = new Headers({ "Authorization": this.token });
         let options = new RequestOptions({ headers: headers });
@@ -37,7 +37,6 @@ export class ProductService {
             map(data => {
                 return data
             }),
-            catchError(this.handleErrors)
         );
     }
 

@@ -45,7 +45,7 @@ export class PersonalInfoPage implements OnInit {
     this.signupService.signup(this.user)
     .subscribe(
       (result) => {
-        console.log("result:" +result)
+        //console.log("result:" +result)
         this.isLoading = false;
           const param = { 
             jwt: result.token,
@@ -68,7 +68,20 @@ export class PersonalInfoPage implements OnInit {
 
           this.router.navigate(["dashboard"], { queryParams: param });
     },
-      (error) => alert("Unfortunately we could not create your account.")
+      (error) => {
+        let body = JSON.parse(error._body)
+        console.log(body)
+       
+        if (body){
+          body = body.replace(/"|}|\{|]|\[/g, "")
+          body = body.replace(/,/g, " ")
+          alert(body)
+          return
+        }
+
+        alert("Unfortunately we could not establish a connection.")
+        return
+    }
     );
       
   }

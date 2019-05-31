@@ -34,7 +34,6 @@ export class ServiceService {
             map(data => {
                 return data
             }),
-            catchError(this.handleErrors)
         );
     }
 

@@ -51,15 +51,17 @@ NotBuyerName=""
     this.user = new Signup();
 
     this.localNotifications.on('click').subscribe((notification) => {
+      
+      let requestType = this.checkRequestType()
+      if(requestType=="Request"){
+        //console.log("It worked:" + this.NotRequestType)
+      let param = this.fetchNotData()
 
-      if(this.NotRequestType=="Request"){
-        console.log("It worked:" + this.NotRequestType)
-      let param = {token:this.token, name:this.NotProductName, rid:this.requestId, auth: this.AuthName, avatar: this.NotIcon, authAvi:this.AuthAvatar, buyer:this.NotBuyerName, image: this.NotImage, owner:this.NotProductOwner, device:this.buyerDevice, price:this.NotProductPrice }
       this.router.navigate(["dashboard", "requests"], { queryParams: param });
       }
 
       if(this.NotRequestType=="Review"){
-        console.log("It worked:" + this.NotRequestType)
+       // console.log("It worked:" + this.NotRequestType)
       this.router.navigate(["dashboard", "reviews"]);
       }
 
@@ -72,6 +74,7 @@ NotBuyerName=""
     this.token=val
     this.UserService.load(val)
         .subscribe(loadedUser => {
+
          if(loadedUser[0].status){
            return this.logout()
          }
@@ -84,6 +87,7 @@ NotBuyerName=""
           this.user.status=loadedUser[0].user.online
           this.user.password=""
           this.user.password_confirmation=""
+          //console.log(this.user)
           },
           (error) => {
             alert("Unfortunately we could not retireve your profile.")
@@ -138,13 +142,13 @@ NotBuyerName=""
       
       this.UserService.onApp(this.token)
         .subscribe(response => {
-          console.log(response)
+          //console.log(response)
         });
 
      } else {
       this.UserService.offApp(this.token)
       .subscribe(response => {
-        console.log(response)
+        //console.log(response)
       });
      }
   }
@@ -166,6 +170,16 @@ NotBuyerName=""
   logout() {
     this.storage.set("token", "")
     this.router.navigate(['']);
+  }
+
+  fetchNotData() {
+    let param = {token:this.token, name:this.NotProductName, rid:this.requestId, auth: this.AuthName, avatar: this.NotIcon, authAvi:this.AuthAvatar, buyer:this.NotBuyerName, image: this.NotImage, owner:this.NotProductOwner, device:this.buyerDevice, price:this.NotProductPrice }
+    return param
+  }
+
+  checkRequestType(){
+    alert(this.NotRequestType)
+  return this.NotRequestType
   }
 
 }

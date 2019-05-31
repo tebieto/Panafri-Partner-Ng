@@ -4,6 +4,7 @@ import { ServiceService } from "../../shared/add-service/service.service";
 import { Categories } from "../../shared/categories/categories.model";
 import { CategoriesService } from "../../shared/categories/categories.service";
 import { Stores } from "../../shared/stores/stores.model";
+import { Router } from '@angular/router';
 import { StoresService } from "../../shared/stores/stores.service";
 import { Storage } from '@ionic/storage';
 import { ActivatedRoute } from '@angular/router';
@@ -24,6 +25,7 @@ export class EditServicePage implements OnInit {
   storeList=[]
   imagePaths: string[];
   image:{}
+  debugging=true
 
   isDesktop: boolean;
  imgPreview = "";
@@ -35,6 +37,7 @@ export class EditServicePage implements OnInit {
     private route: ActivatedRoute,
     private imagePicker: ImagePicker,
     private base64: Base64,
+    private router: Router,
     private imageManagementService: ImageManagementService,
     private CategoriesService: CategoriesService,
     private storesService: StoresService,
@@ -55,9 +58,9 @@ export class EditServicePage implements OnInit {
       this.service.category=params.category
       this.service.description=params.description
       this.service.location=params.location
-      this.service.store=3
-      this.service.quantity=2
+      this.service.store=params.store
       this.imgPreview=params.image
+      //console.log(params)
     });
 
     this.CategoriesService.load()
@@ -85,8 +88,9 @@ export class EditServicePage implements OnInit {
   async uploadFromImagePicker() {
     try {
       let result= await this.imageManagementService.uploadFromImagePicker();
-      console.log(result['URL'])
+     // console.log(result['URL'])
       this.imgPreview=result['URL']
+      this.service.image= this.imgPreview
          
     } catch(error) {
       console.log(error);
@@ -118,11 +122,37 @@ export class EditServicePage implements OnInit {
 
 
   saveService() {
-    this.service.image= this.imgPreview
+    
+
+    if(!this.service.store){
+      alert("Select store")
+      return
+    }
+
+    if(!this.service.image && this.debugging==false){
+      alert("Upload a service image.")
+      return
+    }
+
+    if(!this.service.image){
+      this.service.image=this.imgPreview
+    }
+
+    if(!this.service.name || !this.service.image || !this.service.description || !this.service.price || !this.service.location || !this.service.category || !this.service.store) {
+      alert("All fields are required")
+      
+      return
+    }
+
     this.serviceService.edit(this.service)
       .subscribe(
         (result) => {
-          alert(result.success)
+          
+          if(result.success){
+          alert("Service updated successfully.")
+          this.goBackToService()
+          return
+          }
 
          
       },
@@ -132,6 +162,10 @@ export class EditServicePage implements OnInit {
         } 
       );
       
+  }
+
+  goBackToService() {
+    this.router.navigate(['dashboard', 'services']);
   }
 
 }

@@ -8,7 +8,7 @@ import { Categories } from "./categories.model";
 
 @Injectable()
 export class CategoriesService {
-    baseUrl = Config.apiUrl + "categories";
+    baseUrl = Config.appUrl + "categories";
 
     constructor(private http: Http) { }
 
@@ -33,7 +33,6 @@ export class CategoriesService {
                 });
                 return categoryList;
             }),
-            catchError(this.handleErrors)
         );
     }
 

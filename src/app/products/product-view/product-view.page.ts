@@ -46,11 +46,23 @@ export class ProductViewPage implements OnInit {
       this.Image=params.image
       this.Category=params.category
       this.Description=params.description
+      console.log(this.Product)
+      
     });
   }
 
+  startDeleteProduct(){
+    
+   let c = confirm("Are you sure you want to delete this product?")
+   if (c) {
+     this.deleteProduct()
+   } else {
+     return
+   }
+}
+
   editProduct(){
-    console.log(this.Product)
+    //console.log(this.Product)
     this.router.navigate(['dashboard', 'products', 'edit'], { queryParams: this.Product });
   }
 
@@ -59,8 +71,11 @@ export class ProductViewPage implements OnInit {
     this.productService.delete(this.product)
       .subscribe(
         (result) => {
-          alert(result.success)
-
+          if(result.success){
+          alert("Product deleted successfully")
+          this.goBackToProducts()
+          return
+          }
          
       })
 

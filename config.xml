@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="app.panafri.partner" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>panafri</name>
+    <name>Panafri Partners</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
@@ -95,4 +95,7 @@
     <plugin name="com-badrit-base64" spec="0.2.0" />
     <plugin name="cordova-plugin-local-notification" spec="0.9.0-beta.2" />
     <engine name="android" spec="7.1.4" />
+    <allow-navigation href="http://192.168.8.101:8100" sessionid="e9b19bbe" />
+    <allow-navigation href="http://192.168.8.102:8100" sessionid="3a2eee00" />
+    <allow-navigation href="http://192.168.43.244:8100" sessionid="01fbd278" />
 </widget>

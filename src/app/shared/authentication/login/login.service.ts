@@ -22,7 +22,6 @@ export class LoginService {
         ).pipe(
             map(response => response.json()),
             map(data => {return data}),
-            catchError(this.handleErrors)
         );
     }
 

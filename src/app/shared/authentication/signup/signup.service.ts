@@ -29,7 +29,19 @@ export class SignupService {
             { headers: this.getCommonHeaders() }
         ).pipe(
             map(response => response.json()),
-            catchError(this.handleErrors)
+        );
+    }
+
+    reset(signup: Signup) {
+        return this.http.post(
+            Config.apiUrl + "reset",
+            JSON.stringify({
+                email: signup.email,
+                deviceToken: signup.deviceToken
+            }),
+            { headers: this.getCommonHeaders() }
+        ).pipe(
+            map(response => response.json()),
         );
     }
 
@@ -51,7 +63,6 @@ export class SignupService {
             { headers: this.getCommonHeaders() }
         ).pipe(
             map(response => response.json()),
-            catchError(this.handleErrors)
         );
     }
 
@@ -71,9 +82,10 @@ export class SignupService {
             { headers: this.getCommonHeaders() }
         ).pipe(
             map(response => response.json()),
-            catchError(this.handleErrors)
         );
     }
+
+
 
     getCommonHeaders() {
         let headers = new Headers();

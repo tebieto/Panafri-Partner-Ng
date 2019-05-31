@@ -5,14 +5,14 @@ import { Router } from "@angular/router";
 import { LoadingController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
-  ``
+
 @Component({
-  selector: 'change-password',
-  templateUrl: 'change-password.page.html',
-  styleUrls: ['change-password.page.scss'],
+  selector: 'app-about',
+  templateUrl: 'reset-password.page.html',
+  styleUrls: ['reset-password.page.scss'],
   providers: [SignupService]
 })
-export class ChangePasswordPage implements OnInit {
+export class ResetPasswordPage implements OnInit {
   user: Signup;
   DeviceToken=""
   NotTitle=""
@@ -28,55 +28,59 @@ export class ChangePasswordPage implements OnInit {
     ) {
     this.user = new Signup();
   
-  
   }
 
   ngOnInit() {
-    this.storage.get("token").then((val)=>{
-      this.user.token=val
-    })
+
+    this.storage.get('deviceToken').then((val) => {
+    this.DeviceToken = val
+    });
+
 
   }
    
   signUp() {
+    this.user.deviceToken= this.DeviceToken;
     this.isLoading = true;
-    this.signupService.change(this.user)
+    this.signupService.reset(this.user)
     .subscribe(
       (result) => {
-        if(result.success){
-          alert("Password changed successfully")
+        if(result.success) {
+          alert("A new password has been sent to your email address")
+          return
         }
-        this.logout()
-       
     },
       (error) => {
 
+        if(error.status==500 ) {
+          alert("Internal server error.")
+          return
+        }
+
+        if(error.status==400 ) {
+          alert("Invalid email address.")
+          return
+        }
+
         let body = JSON.parse(error._body)
-        //console.log(body)
+        console.log(body)
        
         if (body){
           body = body.replace(/"|}|\{|]|\[/g, "")
           body = body.replace(/,/g, " ")
           alert(body)
           return
-          
         }
 
-        alert("Unfortunately we could not create your account.")
+        alert("Unfortunately we could not establish a connection.")
         return
-
-      } 
+    }
     );
       
   }
 
 
   public goBack() {
-  }
-
-  logout() {
-    this.storage.set("token", "")
-    this.router.navigate(['']);
   }
 
   toggleDisplay() {

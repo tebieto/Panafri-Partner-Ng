@@ -36,7 +36,6 @@ export class StoreService {
             map(data => {
                 return data
             }),
-            catchError(this.handleErrors)
         );
     }
 

@@ -28,7 +28,8 @@ export class ProductsService {
                         product.name, 
                         product.price, 
                         product.owner,
-                        product.type, 
+                        product.store,
+                        product.type,
                         product.description, 
                         product.category, 
                         product.location,
@@ -39,8 +40,7 @@ export class ProductsService {
                         ));
                 });
                 return productList;
-            }),
-            catchError(this.handleErrors)
+            })
         );
     }
 

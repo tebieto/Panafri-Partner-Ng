@@ -31,6 +31,10 @@ export class ServicesPage implements OnInit {
     this.ServicesService.load(this.token)
       .subscribe(loadedServices => {
         console.log(loadedServices)
+        if(loadedServices.length<1){
+          alert("You currently have no servic to display")
+          return
+        }
         loadedServices.forEach((serviceObject) => {
           this.serviceList.unshift(serviceObject);
         });
@@ -41,7 +45,7 @@ export class ServicesPage implements OnInit {
   }
 
   goToNewService() {
-    this.router.navigate(['add-services']);
+    this.router.navigateByUrl('dashboard/services/new');
   }
 
   viewService(item) {

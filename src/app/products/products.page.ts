@@ -30,6 +30,11 @@ export class ProductsPage implements OnInit {
     
     this.ProductsService.load(this.token)
       .subscribe(loadedProducts => {
+        //console.log(loadedProducts)
+        if(loadedProducts.length<1){
+          alert("You currently have no product to display")
+          return
+        }
         loadedProducts.forEach((productObject) => {
         
           this.productList.unshift(productObject);

@@ -20,6 +20,6 @@
     <ion-button color="danger" (click)="Login()">SIGN IN</ion-button>
     <p>Don't have an account? <b><a [routerLink]="['/register', 'signup', { outlets: { personal: ['personal'] } }]">Sign
           up!</a></b></p>
-    <p><a [routerLink]="['/register', 'signup', { outlets: { personal: ['personal'] } }]">Forgot password?</a></p>
+    <p><a [routerLink]="['/reset']">Forgot password?</a></p>
   </div>
 </ion-content>

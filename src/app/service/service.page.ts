@@ -47,11 +47,21 @@ export class ServicePage implements OnInit {
       this.Image=params.image
       this.Category=params.category
       this.Description=params.description
+      //console.log(params)
     });
   }
 
+  startDeleteService(){
+    let c = confirm("Are you sure you want to delete this service?")
+    if (!c){
+      return
+    } else {
+      this.deleteService()
+    }
+  }
+
   editService(){
-    console.log(this.Service)
+    //console.log(this.Service)
     this.router.navigate(['dashboard', 'services', 'edit'], { queryParams: this.Service });
   }
 
@@ -62,7 +72,7 @@ export class ServicePage implements OnInit {
       .subscribe(
         (result) => {
           alert(result.success)
-
+          this.goBackToService()
          
       })
   }

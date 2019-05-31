@@ -34,20 +34,22 @@ export class HomePage implements OnInit {
     ) {
 
     this.user = new Login();
-    this.user.email = "tebieto@gmail.com";
-    this.user.password = "1223454allu4";
+    
     
   
   }
 
   ngOnInit() {
-
+    
     this.fcm.getToken().then(token => {
+     // alert('yes')
+      //alert(token)
       this.DeviceToken=token;
       this.storage.set('deviceToken', this.DeviceToken);
     });
 
     this.fcm.onTokenRefresh().subscribe(token => {
+      //alert('refresh')
       this.DeviceToken=token;
       this.storage.set('deviceToken', this.DeviceToken);
     });
@@ -67,10 +69,11 @@ export class HomePage implements OnInit {
     this.user.deviceToken= this.DeviceToken;
     
     this.isLoading = true;
-    
+   // console.log(this.user)
     this.loginService.login(this.user)
       .subscribe(
         (result) => {
+         // alert("yes")
           this.isLoading = false;
           const param = { 
             jwt: result.token,
@@ -94,7 +97,33 @@ export class HomePage implements OnInit {
 
           this.router.navigate(["dashboard"], { queryParams: param });
       },
-        (error) => alert("Unfortunately we could not find your account.")
+      (error) => {
+
+        if(error.status==500 ) {
+          alert("Internal server error.")
+          return
+        }
+
+        if(error.status==400 ) {
+          alert("Invalid email address or password.")
+          return
+        }
+
+        let body = JSON.parse(error._body)
+        //console.log(body)
+       
+        if (body){
+          body = body.replace(/"|}|\{|]|\[/g, "")
+          body = body.replace(/,/g, " ")
+          alert(body)
+          return
+          
+        }
+  
+        alert("Unfortunately we could not create your account.")
+        return
+  
+      }
       );
       
   }

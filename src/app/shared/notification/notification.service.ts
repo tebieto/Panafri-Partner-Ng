@@ -16,6 +16,7 @@ export class NotificationService {
             "title" : notification.title,
             "body"  : notification.body,
             "app"  : "partner",
+            "type"  : "Request",
             "price": notification.price,
             "name": notification.name,
             "image"  : notification.image,

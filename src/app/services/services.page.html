@@ -21,7 +21,7 @@
   
   <ion-content>
     <ion-row>
-      <ion-col *ngFor="let item of serviceList" (click)="viewService(item.id)">
+      <ion-col size="6" *ngFor="let item of serviceList" (click)="viewService(item.id)">
         <ion-card>
           <ion-card-header>
             <ion-card-subtitle>{{item.category}}</ion-card-subtitle>
