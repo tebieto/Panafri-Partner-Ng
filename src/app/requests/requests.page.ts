@@ -24,6 +24,7 @@ export class RequestsPage implements OnInit {
   successList=[]
   public currentTab: any;
   showIncoming= false
+  showAll=true
   not: Notification;
   request: Request
   AuthId=""
@@ -59,6 +60,14 @@ export class RequestsPage implements OnInit {
     this.route.queryParams.subscribe(params => {
      
       this.incomingList.push(params)
+      if(this.incomingList[0].name) {
+        this.showIncoming= true
+        this.showAll = false
+        
+      } else {
+        this.showAll = true
+        this.showIncoming= false
+      }
 
       this.BuyerDeviceToken=params.device
       this.productName= params.name
@@ -67,10 +76,7 @@ export class RequestsPage implements OnInit {
       this.productImage=params.image
       this.AuthName= params.auth
       this.AuthAvatar= params.authAvi
-      if(this.incomingList[0].name) {
-        this.showIncoming= true
-        
-      }
+      
 
 
     });
@@ -106,7 +112,7 @@ export class RequestsPage implements OnInit {
   notify(type) {
     this.not.id = this.AuthId;
     this.not.title = this.AuthName.toUpperCase();
-    this.not.body = this.AuthName.toUpperCase() + " " + type + " " + this.productName;
+    this.not.body = this.AuthName.toUpperCase() + " " + type + " " + this.productName + 'Request';
     this.not.image = this.productImage;
     this.not.type= "Request"
     this.not.name = this.productName
@@ -118,8 +124,6 @@ export class RequestsPage implements OnInit {
     this.notificationService.notification(this.not)
 .subscribe(
   (result) => {
-   console.log(result)
-   this.notify("declined")
 },
   (error) => {
     alert("Unfortunately we could not push notification.")
@@ -145,7 +149,9 @@ accept(rid){
     this.request.token = val
     this.RequestService.accept(this.request)
       .subscribe(result => {
-        console.log("result")
+        this.showAll = true
+        this.showIncoming= false
+        alert('Request accepted')
         this.notify("accepted")
       });
         
@@ -159,10 +165,12 @@ decline(rid){
         
     this.request.token
    this.request.id=rid
-    this.RequestService.accept(this.request)
+    this.RequestService.cancel(this.request)
       .subscribe(result => {
-        console.log("result")
-        this.notify("accepted")
+        this.showAll = true
+        this.showIncoming= false
+        alert('request declined')
+        this.notify("declined")
       });
         
     });

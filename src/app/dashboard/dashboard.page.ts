@@ -87,7 +87,7 @@ NotBuyerName=""
           this.user.status=loadedUser[0].user.online
           this.user.password=""
           this.user.password_confirmation=""
-          //console.log(this.user)
+          console.log(loadedUser)
           },
           (error) => {
             alert("Unfortunately we could not retireve your profile.")

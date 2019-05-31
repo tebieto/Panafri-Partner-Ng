@@ -22,19 +22,20 @@
     <ion-segment-button value="successful">
       {{successList.length}} Successful
     </ion-segment-button>
-    <ion-segment-button value="incomming" *ngIf="showIncoming" [checked]="checkIncoming()">
+    <ion-segment-button value="incomming" *ngIf="showIncoming" [checked]="showIncoming">
       {{incomingList.length}} incomming
     </ion-segment-button>
     <ion-segment-button value="missed">
       {{cancelledList.length}} Declined
     </ion-segment-button>
-    <ion-segment-button value="all" [checked]="checkAll()">
+    <ion-segment-button value="all" [checked]="showAll">
       {{requestList.length}} All
     </ion-segment-button>
   </ion-segment>
 </ion-header>
 
 <ion-content padding>
+
   <div *ngIf="currentTab == 'successful'">
     <ion-list>
       <ion-item *ngFor="let item of successList">
@@ -66,6 +67,8 @@
       </ion-col>
     </ion-row>
   </div>
+  </div>
+
   <div *ngIf="currentTab == 'missed'">
     <ion-list>
       <ion-item *ngFor="let item of cancelledList">
@@ -75,12 +78,11 @@
         <ion-label>
           <h2>{{item.seller.name}} <span class="disabled-text">[{{item.product.name.toLowerCase()}}]</span></h2>
           <p>Requested by {{item.buyer.name}} on {{item.created_at}}</p>
-          <p>cancelled</p>
         </ion-label>
       </ion-item>
     </ion-list>
   </div>
-</div>
+
   <div *ngIf="currentTab == 'all'">
     <ion-list>
       <ion-item *ngFor="let item of requestList">
