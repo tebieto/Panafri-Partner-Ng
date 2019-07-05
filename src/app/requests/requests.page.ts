@@ -23,8 +23,8 @@ export class RequestsPage implements OnInit {
   cancelledList=[]
   successList=[]
   public currentTab: any;
-  showIncoming= false
-  showAll=true
+  showIncoming= true
+  showAll=false
   not: Notification;
   request: Request
   AuthId=""
@@ -63,6 +63,7 @@ export class RequestsPage implements OnInit {
       if(this.incomingList[0].name) {
         this.showIncoming= true
         this.showAll = false
+        this.currentTab = 'incoming';
         
       } else {
         this.showAll = true
@@ -151,6 +152,7 @@ accept(rid){
       .subscribe(result => {
         this.showAll = true
         this.showIncoming= false
+        this.currentTab = 'all';
         alert('Request accepted')
         this.notify("accepted")
       });
@@ -169,6 +171,7 @@ decline(rid){
       .subscribe(result => {
         this.showAll = true
         this.showIncoming= false
+        this.currentTab = 'all';
         alert('request declined')
         this.notify("declined")
       });
